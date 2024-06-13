@@ -3,9 +3,10 @@
 namespace App\Controllers;
 
 use App\Controllers\view;
-use App\Models\SistemasUsersModel;
+use App\Models\LoginModel;
 use CodeIgniter\HTTP\ResponseInterface;
 use ResponseTrait; 
+
 
 class LoginController extends BaseController
 {   
@@ -22,7 +23,7 @@ class LoginController extends BaseController
             $username = $this->request->getVar('username');
             $password = $this->request->getVar('password');
 
-            $modelo = new SistemasUsersModel();
+            $modelo = new LoginModel();
             $user = $modelo->verificarUsuario($username, $password);
             
             return $this->response->setJSON($user);
@@ -43,7 +44,8 @@ class LoginController extends BaseController
         if($this->request->getMethod() === 'post'){
             $username = $this->request->getVar('username');
             $password = $this->request->getVar('password');
-            $modelo =new SistemasUsersModel();
+
+            $modelo =new LoginModel();
             $user = $modelo->cambioClaveBd($username, $password);
             if($user){
                 return $this->response->setJSON($user);
@@ -54,22 +56,4 @@ class LoginController extends BaseController
         return $this->response->setJSON(['status' => 'error', 'message' => 'No esta recibiendo ']);
 
     }
-    
-    // public function actualizacionClave()
-    // {
-    //     if($this->request->getMethod() === 'post'){
-    //         $username = $this->request->getVar('username');
-    //         $password = $this->request->getVar('password');
-
-    //         $modelo =new SistemasUsersModel();
-    //         $user = $modelo->cambioClaveBd($username, $password);
-    //         return $this->response->setJSON($user);
-    //     }
-
-    //     return $this->response->setJSON(['status' => 'error', 'message' => 'No esta recibiendo ']);
-
-    // }
-
-
-
 }

@@ -57,39 +57,5 @@ class SistemasUsersModel extends Model
             // Manejo de errores
             return json_encode(['error' => $e->getMessage()]);
         }
-    }
-    
-     public function verificarUsuario($username, $password)
-    { 
-        $user = $this->where('username', $username)->first();
-        if (!$user) {
-            return ['status' => 'error', 'message' => 'Usuario no existe'];
-        }
-        if($user['pass'] == null){
-            return ['status' => 'info', 'message' => 'Debe cambiar la clave '];
-        }else{
-            if ($password != $user['pass']) {
-                return ['status' => 'error', 'message' => 'Datos incorrectos '];
-            }
-    
-            return ['status' => 'success', 'user' => $user];
-        }
-
-        
-        
-    }
-
-    public function cambioClaveBd($username, $password)
-     {
-        $user=$this->where('username', $username)->first();
-        if($user){
-            
-            $this->where('username', $username)->set('pass',$password)->update();
-        return ['status' => 'success', 'message'=> 'Clave modificada con exito'];
-        }else{
-        return ['status' => 'error', 'message' => 'Usuario no encontrado por lo que no se cambio la contraseña'];
-        }
-              
-     }
-
+    }   
 }

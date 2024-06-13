@@ -11,14 +11,13 @@
 
 <body>
     <div class="container">
-        <div class="row text-center">
+        <div class="d-flex flex-md-row justify-content-center">
             <div class="form-group">
-                <img src="https://sistemas.santodomingo.cl/solicitud/Logoo.png" height="150" width="150" style="float: left;margin-top: 20px;margin-right: 10px;"> <!--  si se quiere  vovler el logo a la izquierd style="float: left;margin-top: 20px;margin-right: 10px;"-->
-                <h2 class="">Sistema de Solicitud de Bienes y Servicios</h2>
-                <h4 class="">Ingrese Sesión para entrar al sitio</h4>
+                <img src="/Logoo.png" height="100" width="100" class="d-flex"> 
+                <h2 class="d-flex">Sistema de Solicitud de Bienes y Servicios</h2>
+                <h4 class="d-flex">Ingrese Sesión para entrar al sitio</h4>
             </div>
         </div>
-
     </div>
     <hr>
     <div class="container" id="containerlogin">
@@ -27,42 +26,46 @@
             <div class="card-body p-3">
                 <h1 class="fs-4 card-title fw-bold mb-4 text-center" id="titulo">Iniciar sesión</h1>
                 <form id="loginForm" autocomplete="off">
-
-                    <div class="mb-3">
-                        <label class="mb-2" for="username">Usuario</label>
-                        <input type="text" class="form-control" name="username" id="username" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <div class="mb-2 w-100">
-                            <label for="password">Contraseña</label>
+                    <div>
+                        <div class="mb-3">
+                            <label class="mb-2" for="username">Usuario</label>
+                            <input type="text" class="form-control" name="username" id="username" required>
                         </div>
-                        <input type="password" class="form-control" name="password" id="password" required>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="cambioClave">
-                        <label class="form-check-label" for="cambioClave">
-                            Cambiar contraseña al iniciar sesión
-                        </label>
-                    </div>
 
-                    <div class="d-grid gap-2 col-4 mx-auto my-3" id="Ini">
-                        <button type="submit" class="btn position-fixed" style="background-color: #63d245; color:#ecf0f1;">
-                            Iniciar sesion
-                        </button>
+                        <div class="mb-3">
+                            <label for="password">Contraseña</label>
+                            <input type="password" class="form-control" name="password" id="password" required>
+                        </div>
+
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" value="" id="cambioClave">
+                            <label class="form-check-label" for="cambioClave">
+                                Cambiar contraseña al iniciar sesión
+                            </label>
+                        </div>
+
+                        <div class="d-flex mb-3 justify-content-center" >
+                            <button type="submit" class="btn position-fixed " style="background-color: #63d245; color:#ecf0f1;" >
+                                Iniciar sesion
+                            </button>
+                        </div>
                     </div>
                 </form>
 
             </div>
             <script>
+                document.addEventListener('DOMContentLoaded',(event)=>{
+                    sessionStorage.clear()
+                })
                 document.getElementById('loginForm').addEventListener('submit', function(e) {
                     e.preventDefault();
 
                     let username = document.getElementById('username').value;
                     let password = document.getElementById('password').value;
                     let cambioClave = document.getElementById('cambioClave').checked;
+                    sessionStorage.setItem('username', username)
 
-
+                    
                     fetch('<?= base_url('/autentificar') ?>', {
                             method: 'POST',
                             headers: {
@@ -80,10 +83,10 @@
                                     icon: 'success',
                                     title: 'Bienvenido',
                                     text: data.message
-                                }).then(() => {
-                                    if (cambioClave) {
-                                        sessionStorage.setItem('username', username)
+                                }).then(() => { 
+                                    if (cambioClave) {      
                                         window.location.href = '<?= base_url('/cambioClave') ?> ';
+                                        
 
                                     } else {
                                         window.location.href = '<?= base_url('/') ?>';
@@ -102,6 +105,8 @@
                                         })
                                         .then(() => {
                                             window.location.href = '<?= base_url('/cambioClave') ?> ';
+                                           
+
                                         })
                                 } else {
                                     Swal.fire({

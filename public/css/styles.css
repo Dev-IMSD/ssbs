@@ -49,15 +49,14 @@ label {
 }
 
 hr {
+    opacity: 0.7;
     margin-top: 20px;
     margin-bottom: 20px;
     margin-right: 70px;
     margin-left: 70px;
     border: 0;
-    border-top-color: currentcolor;
-    border-top-style: none;
-    border-top-width: 0px;
-    border-top: 1px solid #eee;
+    border-top: 1px solid #ffffff;
+    
 }
 
 #icon1, #icon2 {
@@ -66,3 +65,15 @@ hr {
     cursor: pointer;
     color: #009174;
 }
+
+img{
+    float: left;
+    margin-top: 20px;
+    margin-right: 10px;
+}
+
+.btn{
+    background-color: #63d245;
+    color: #ffffff;
+}
+
