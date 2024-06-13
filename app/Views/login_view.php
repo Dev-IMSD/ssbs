@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +17,7 @@
   <script src="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table-locale-all.min.js"></script>
   <script src="https://unpkg.com/bootstrap-table@1.18.2/dist/extensions/export/bootstrap-table-export.min.js"></script>
      
-    <style>
+¿<style>
     .select,
     #locale {
       width: 100%;
@@ -126,7 +125,7 @@
                     </div>
                     <div class="form-group">
                     <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="cambiar_pass" name="cambiar_pass" value="si" value="<?php echo set_value('cambiar_pass'); ?>">
+                    <input class="form-kchec-input" type="checkbox" id="cambiar_pass" name="cambiar_pass" value="si" value="<?php echo set_value('cambiar_pass'); ?>">
                     <label class="form-check-label" >
                     Cambiar contraseña al iniciar sesión
                     </label>
