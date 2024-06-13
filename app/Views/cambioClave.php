@@ -97,7 +97,7 @@
                             icon: "warning",
                             title: "¡Tus contraseñas no coinciden 👀!",
                             showConfirmButton: false,
-                            timer: 1100
+                            timer: 1500
                         });
                     } else {
                         try {
@@ -117,9 +117,9 @@
                                     position: "center",
                                     icon: "success",
                                     title: "¡Se ha cambiado tu contraseña!",
-                                    text: "Entrando al inicio",
+                                    text: "Porfavor ingrese nuevamente",
                                     showConfirmButton: false,
-                                    timer: 2000
+                                    timer: 2200
                                 }).then(() => {
                                     window.location.href = '<?= base_url('/login') ?>';
                                 });
@@ -127,7 +127,7 @@
                             } else {
                                 Swal.fire({
                                     icon: data.status,
-                                    title: 'Ups, algo salió mal',
+                                    title: 'Ups!! , algo salió mal',
                                     text: data.message
                                 });
                             }
